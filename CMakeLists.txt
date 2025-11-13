@@ -3,6 +3,7 @@ project(ASC_ode)
 
 set (CMAKE_CXX_STANDARD 20)
 
+add_compile_options(-fpermissive)
 
 include_directories(src nanoblas/src)
 

@@ -1,6 +1,7 @@
 #ifndef NONLINFUNC_H
 #define NONLINFUNC_H
 
+#include <memory>
 #include <vector.hpp>
 #include <matrix.hpp>
 
