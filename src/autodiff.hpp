@@ -1,8 +1,15 @@
 #ifndef AUTODIFF_HPP
 #define AUTODIFF_HPP
 
+<<<<<<< HEAD
 #include <cmath>
+=======
+#include <cstddef> 
+#include <ostream> 
+#include <cmath>   
+>>>>>>> upstream/RungeKutta
 #include <array>  
+
 
 namespace ASC_ode
 {
