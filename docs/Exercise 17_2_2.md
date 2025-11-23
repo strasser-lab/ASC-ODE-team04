@@ -12,15 +12,15 @@ In this exercise we had to:
 
 The Explicit Euler method has been implemented in `Exercise_17_2_2.cpp`. The method is defined as:
 
-[
+$$
 y_{n+1} = y_n + \tau f(y_n)
-]
+$$
 
 where (y) is the state vector ([y, v]^T) (position and velocity), and (f(y_n)) is the right-hand side of the mass-spring ODE:
 
-[
+$$
 \frac{dy}{dt} = v, \quad \frac{dv}{dt} = -y
-]
+$$
 
 The implementation updates the state at each timestep as follows:
 
@@ -34,13 +34,13 @@ y.v += tau * f.v;
 
 The Improved Euler method is a two-stage method, which uses a midpoint-like estimate:
 
-[
+$$
 \tilde{y} = y_n + \frac{\tau}{2} f(y_n)
-]
+$$
 
-[
+$$
 y_{n+1} = y_n + \tau f(\tilde{y})
-]
+$$
 
 This improves the accuracy compared to the simple Explicit Euler. In the code, the implementation is:
 
@@ -58,9 +58,9 @@ y.v += tau * f2.v;
 
 For the mass-spring system with (m = k = 1) and initial conditions (y(0)=1, v(0)=0), the analytical solution is:
 
-[
+$$
 y(t) = \cos(t), \quad v(t) = -\sin(t)
-]
+$$
 
 We use this to compute errors and energy deviations.
 
@@ -79,9 +79,9 @@ Both methods were run for (T = 20) with 200 steps ((\tau = 0.1)).
 
 Energy is computed as:
 
-[
+$$
 E = \frac{1}{2}v^2 + \frac{1}{2}y^2
-]
+$$
 
 For each method, the energy deviations were tracked.
 
