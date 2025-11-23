@@ -17,3 +17,5 @@ target_link_libraries (test_ode PUBLIC nanoblas)
 add_executable (demo_autodiff demos/demo_autodiff.cpp)
 target_link_libraries (demo_autodiff PUBLIC nanoblas)
 
+add_executable (Exercise17_4_1 demos/Exercise_17_4_1.cpp)
+target_link_libraries (Exercise17_4_1 PUBLIC nanoblas)
