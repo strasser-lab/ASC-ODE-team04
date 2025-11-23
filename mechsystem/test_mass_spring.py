@@ -17,12 +17,12 @@ mss.add (Spring(1, 20, (mA, mB)))
 
 print ("state = ", mss.getState())
 
-Simulate (mss, 0.1, 10)
+mss.simulate (0.1, 10)
 
 print ("state = ", mss.getState())
 
 
-Simulate (mss, 0.1, 10)
+mss.simulate (0.1, 10)
 
 print ("state = ", mss.getState())
 

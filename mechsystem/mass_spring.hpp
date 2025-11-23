@@ -1,8 +1,6 @@
 #ifndef MASS_SPRING_HPP
 #define MASS_SPRING_HPP
 
-
-
 #include <nonlinfunc.hpp>
 #include <timestepper.hpp>
 
@@ -10,7 +8,6 @@ using namespace ASC_ode;
 
 #include <vector.hpp>
 using namespace nanoblas;
-
 
 
 template <int D>
@@ -51,7 +48,7 @@ class Spring
 public:
   double length;  
   double stiffness;
-  std::array<Connector,2> connections;
+  std::array<Connector,2> connectors;
 };
 
 template <int D>
@@ -77,14 +74,11 @@ public:
     return { Connector::MASS, m_masses.size()-1 };
   }
   
-  size_t addSpring (Spring s) // double length, double stiffness, Connector c1, Connector c2)
+  size_t addSpring (Spring s) 
   {
-    m_springs.push_back (s); // Spring{length, stiffness, { c1, c2 } });
+    m_springs.push_back (s); 
     return m_springs.size()-1;
   }
-
-
-
 
   auto & fixes() { return m_fixes; } 
   auto & masses() { return m_masses; } 
@@ -133,7 +127,7 @@ std::ostream & operator<< (std::ostream & ost, MassSpringSystem<D> & mss)
   ost << "springs: " << std::endl;
   for (auto sp : mss.springs())
     ost << "length = " << sp.length << ", stiffness = " << sp.stiffness
-        << ", C1 = " << sp.connections[0] << ", C2 = " << sp.connections[1] << std::endl;
+        << ", C1 = " << sp.connectors[0] << ", C2 = " << sp.connectors[1] << std::endl;
   return ost;
 }
 
@@ -161,7 +155,7 @@ public:
 
     for (auto spring : mss.springs())
       {
-        auto [c1,c2] = spring.connections;
+        auto [c1,c2] = spring.connectors;
         Vec<D> p1, p2;
         if (c1.type == Connector::FIX)
           p1 = mss.fixes()[c1.nr].pos;
