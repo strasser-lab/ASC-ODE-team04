@@ -42,25 +42,35 @@ int main()
   int steps = 100;
   double tau = tend/steps;
 
-  Vector<> y = { 1, 0 };  // initializer list
+  Vector<> y_imp = { 1, 0 }; // initializer list;
+  Vector<> y_exp = { 1, 0 };
+
   auto rhs = std::make_shared<MassSpring>(1.0, 1.0);
 
 
 
-   //ExplicitEuler stepper(rhs);
-   ImplicitEuler stepper(rhs);
+   ImplicitEuler implicit_stepper(rhs);
+   ExplicitEuler explicit_stepper(rhs);
 
 
-
-  std::ofstream outfile ("ImplicitExercise_17_4_1.txt");
-  std::cout << 0.0 << "  " << y(0) << " " << y(1) << std::endl;
-  outfile << 0.0 << "  " << y(0) << " " << y(1) << std::endl;
+  std::ofstream implicit_outfile ("data/ImplicitExercise_17_4_1.txt");
+  implicit_outfile << 0.0 << "  " << y_imp(0) << " " << y_imp(1) << std::endl;
 
   for (int i = 0; i < steps; i++)
   {
-     stepper.DoStep(tau, y);
+     implicit_stepper.DoStep(tau, y_imp);
 
-     std::cout << (i+1) * tau << "  " << y(0) << " " << y(1) << std::endl;
-     outfile << (i+1) * tau << "  " << y(0) << " " << y(1) << std::endl;
+     implicit_outfile << (i+1) * tau << "  " << y_imp(0) << " " << y_imp(1) << std::endl;
+  }
+
+
+  std::ofstream explicit_outfile ("data/ExplicitExercise_17_4_1.txt");
+  explicit_outfile << 0.0 << "  " << y_exp(0) << " " << y_exp(1) << std::endl;
+
+  for (int i = 0; i < steps; i++)
+  {
+     explicit_stepper.DoStep(tau, y_exp);
+
+     explicit_outfile << (i+1) * tau << "  " << y_exp(0) << " " << y_exp(1) << std::endl;
   }
 }
