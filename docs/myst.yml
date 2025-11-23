@@ -13,6 +13,7 @@ project:
 
   toc:
     - file: intro.md
+    - file: Exercise17_4_1.md
 
 site:
   template: book-theme
