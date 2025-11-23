@@ -1,13 +1,10 @@
 #ifndef NONLINFUNC_H
 #define NONLINFUNC_H
 
-<<<<<<< HEAD
 #include <memory>
-=======
 #include <cstddef>
 #include <memory>
 
->>>>>>> upstream/RungeKutta
 #include <vector.hpp>
 #include <matrix.hpp>
 
