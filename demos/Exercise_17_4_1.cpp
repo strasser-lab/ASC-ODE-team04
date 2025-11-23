@@ -1,10 +1,8 @@
 
 #include <iostream>
 #include <fstream> 
-
 #include <nonlinfunc.hpp>
 #include <timestepper.hpp>
-#include <implicitRK.hpp>
 
 using namespace ASC_ode;
 
@@ -39,11 +37,12 @@ public:
 int main()
 {
   double tend = 4*M_PI;
-  int steps = 100;
+  int steps = 500;
   double tau = tend/steps;
 
   Vector<> y_imp = { 1, 0 }; // initializer list;
   Vector<> y_exp = { 1, 0 };
+  Vector<> y_crank = { 1, 0 };
 
   auto rhs = std::make_shared<MassSpring>(1.0, 1.0);
 
@@ -51,7 +50,7 @@ int main()
 
    ImplicitEuler implicit_stepper(rhs);
    ExplicitEuler explicit_stepper(rhs);
-
+   CrankNicolson crank_stepper(rhs);
 
   std::ofstream implicit_outfile ("data/ImplicitExercise_17_4_1.txt");
   implicit_outfile << 0.0 << "  " << y_imp(0) << " " << y_imp(1) << std::endl;
@@ -73,4 +72,18 @@ int main()
 
      explicit_outfile << (i+1) * tau << "  " << y_exp(0) << " " << y_exp(1) << std::endl;
   }
+
+  std::ofstream crank_outfile ("data/CrankNicolsonExercise_17_4_1.txt");
+  crank_outfile << 0.0 << "  " << y_crank(0) << " " << y_crank(1) << std::endl;
+
+  for (int i = 0; i < steps; i++)
+  {
+     crank_stepper.DoStep(tau, y_crank);
+
+     crank_outfile << (i+1) * tau << "  " << y_crank(0) << " " << y_crank(1) << std::endl;
+  }
+
+
+
+
 }

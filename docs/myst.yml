@@ -2,7 +2,10 @@ version: 1
 project:
   title: ASC-ODE
   authors:
-    - name: Joe Smith
+    - name: Strasser Christian
+    - name: Fernando Waduge Sachindra Priyageeth
+    - name: HUNG YI-CHENG
+    - name: Csikós Máté László
   copyright: "2025"
   github: JSchoeberl/IntroSC.git
   bibliography:
