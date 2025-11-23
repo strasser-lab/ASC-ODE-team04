@@ -1,20 +1,23 @@
-# Exercise in 17.4.1
+# Exercise 17.4.1
+
 In this exercise we had to:
 
-- implement the Crank Nicolson method
+- implement the Crank–Nicolson method
 - compare the three methods to each other
-- use the three methods to solve a Electronic Network
+- use the three methods to solve an electronic network
 
-## Crank Nicolson
+## Crank–Nicolson
 
-The Crank Nicolson Method has been implemented in [timestepper.hpp](/src/timestepper.hpp)
+The Crank–Nicolson method has been implemented in  
+[timestepper.hpp](/src/timestepper.hpp).
+
 The method is defined as:
 
 $$
-y_{i+1} = y_i + \frac{\tau}{2} \big( f(t_i, y_i) +  f(t_{i+1}, y_{i+1})\big)
+y_{i+1} = y_i + \frac{\tau}{2}\big(f(t_i, y_i) + f(t_{i+1}, y_{i+1})\big)
 $$
 
-To achive this we have adapted the code for the Implicit and Explixit Euler Method and implemented the formula above.
+To achieve this, we adapted the code for the implicit and explicit Euler methods and implemented the formula above.
 
 ```cpp
 
@@ -54,21 +57,100 @@ To achive this we have adapted the code for the Implicit and Explixit Euler Meth
 ![](Plots/mass_spring_steps_100.png)
 ![](Plots/mass_spring_steps_500.png)
 
-This is a simple mass spring system, therefore the energy should be constant and the movement periodic. In our state space this would reflect an perfect ellipse. However, as we can see this is not the case for the Implicit and Explixit Euler Method. The Explicit Method increses the speed by each step relativly fast, simmilarly the Implicit method decreases the velocity with each step, almost as if it was damppend. Both of these effects decrease with an increse in step size.
-By far the best Method in this example is the Crank Nicolson Method, it seems to keep the energy in the system constant.
+This is a simple mass–spring system, therefore the energy should be constant and the movement periodic. In state space, this would appear as a perfect ellipse. However, as we can see, this is not the case for the implicit and explicit Euler methods.  
+The explicit method increases the speed at each step relatively quickly, and similarly, the implicit method decreases the velocity with each step, almost as if the system were damped. Both of these effects decrease with an increase in step size.
 
-##RC-Circuit
+By far the best method in this example is the Crank–Nicolson method, as it seems to keep the energy in the system constant.
 
-The RC-Circuit is modelled by the formula:
-$$U_0(t)=cos(100\pi t)$$
-$$U_C(t) + R C \frac{dU_C}{dt}(t) = U_0(t)$$
+## RC-Circuit
 
-The first step is to brings this into an autonomus form. To do this we treat $t$ as a state variable. With this we have the state variables:
-$$U_C(t) + R C \frac{dU_C}{dt}(t) = cos(100\pi x)$$
-$$x = t$$
-Now we rearange these equations an get:
-$$U_C'(t) = frac{cos(100\pi x)-U_c(t)}{RC}$$
-$$x'(t) = 1$$
+The RC circuit is modelled by the formula:
+$$
+U_0(t)=cos(100\pi t)
+$$
+
+$$
+U_C(t) + R C \frac{dU_C}{dt}(t) = U_0(t)
+$$
+
+To bring this into an autonomous form, we treat $t$ as a state variable and set
+
+$$
+x = t.
+$$
+
+Then the right-hand side becomes
+
+$$
+U_0(x) = \cos(100\pi x),
+$$
+
+and the ODE can be rewritten as
+
+$$
+U_C'(t) = \frac{\cos(100\pi x) - U_C(t)}{RC},
+$$
+
+$$
+x'(t) = 1.
+$$
+
+This RC-Circuit was implemented as a class in [timestepper.hpp](/demos/Exercise_17_4_1_RCCircuit.cpp)
+
+```cpp
+class RCCircuit: public NonlinearFunction
+{
+private:
+  double R;
+  double C;
+
+public:
+  RCCircuit(double R_, double C_) : R(R_), C(C_) {}
+
+  size_t dimX() const override { return 2; }
+  size_t dimF() const override { return 2; }
+  
+  void evaluate (VectorView<double> x, VectorView<double> f) const override
+  {
+    double Uc = x(0);   // capacitor voltage
+    double t  = x(1);   // time
+
+    f(0) = (std::cos(100.0*t*M_PI) - Uc)/(R*C);
+    f(1) = 1.0;
+  }
+  
+  void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override
+  {
+    df = 0.0;
+    //derivatives with respect to the first state variable (Uc)
+    df(0,0) = -1.0 / (R * C);
+    df(1,0) = 0.0;
+    //derivative with respect to the second state variable (t)
+    df(0,1) = -100.0 * M_PI * std::sin(100.0 * x(1)) / (R * C);
+    df(1,1) = 0.0;
+
+  }
+};
+```
+### Plots
+In the plots, one can observe a similar trend as in the mass–spring system.The explicit Euler method has too much energy, while the implicit Euler method has too little.
+However, unlike in the mass–spring case, both numerical solutions remain periodic, so the energy no longer grows or decays over time.
+
+On the left we set the parameters to R=1, C=1 and on the right R=100, C=10^-6
+
+<p align="center">
+  <img src="Plots/RC50stepsR1C1.png" width="45%">
+  <img src="Plots/RC50stepsR100C-6.png" width="45%">
+</p>
+<p align="center">
+  <img src="Plots/RC100stepsR1C1.png" width="45%">
+  <img src="Plots/RC100stepsR100C-6.png" width="45%">
+</p>
+<p align="center">
+  <img src="Plots/RC500stepsR1C1.png" width="45%">
+  <img src="Plots/RC500stepsR100C-6.png" width="45%">
+</p>
+
 
 
 
