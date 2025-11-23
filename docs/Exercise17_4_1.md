@@ -48,15 +48,27 @@ To achive this we have adapted the code for the Implicit and Explixit Euler Meth
     }
   };
 ```
+
 ## Comparison
-![](Plots/mass_spring_steps_50.png")
-![](Plots/mass_spring_steps_100.png")
-![](Plots/mass_spring_steps_500.png")
+![](Plots/mass_spring_steps_50.png)
+![](Plots/mass_spring_steps_100.png)
+![](Plots/mass_spring_steps_500.png)
 
 This is a simple mass spring system, therefore the energy should be constant and the movement periodic. In our state space this would reflect an perfect ellipse. However, as we can see this is not the case for the Implicit and Explixit Euler Method. The Explicit Method increses the speed by each step relativly fast, simmilarly the Implicit method decreases the velocity with each step, almost as if it was damppend. Both of these effects decrease with an increse in step size.
 By far the best Method in this example is the Crank Nicolson Method, it seems to keep the energy in the system constant.
 
 ##RC-Circuit
+
+The RC-Circuit is modelled by the formula:
+$$U_0(t)=cos(100\pi t)$$
+$$U_C(t) + R C \frac{dU_C}{dt}(t) = U_0(t)$$
+
+The first step is to brings this into an autonomus form. To do this we treat $t$ as a state variable. With this we have the state variables:
+$$U_C(t) + R C \frac{dU_C}{dt}(t) = cos(100\pi x)$$
+$$x = t$$
+Now we rearange these equations an get:
+$$U_C'(t) = frac{cos(100\pi x)-U_c(t)}{RC}$$
+$$x'(t) = 1$$
 
 
 
