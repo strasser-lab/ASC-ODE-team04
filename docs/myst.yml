@@ -14,6 +14,7 @@ project:
   toc:
     - file: intro.md
     - file: Exercise17_4_1.md
+    - file: Exercise17_2_2.md
 
 site:
   template: book-theme
