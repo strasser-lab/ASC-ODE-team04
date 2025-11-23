@@ -49,5 +49,8 @@ To achive this we have adapted the code for the Implicit and Explixit Euler Meth
   };
 ```
 ## Comparison
+<img src="docs/Plots/mass_spring_steps_50.png" width="30%">
+<img src="docs/Plots/mass_spring_steps_100.png" width="30%">
+<img src="docs/Plots/mass_spring_steps_500.png" width="30%">
 
-![](docs/Plots/mass_spring_steps_50.png)
+
