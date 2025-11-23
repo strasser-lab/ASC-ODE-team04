@@ -69,9 +69,9 @@ We use this to compute errors and energy deviations.
 ## Comparison
 
 ### Time Evolution
-
+$$
 Both methods were run for (T = 20) with 200 steps ((\tau = 0.1)).
-
+$$
 * **Explicit Euler** shows a gradual drift in energy and slightly increasing amplitude over time.
 * **Improved Euler** remains much closer to the analytical solution, showing better energy conservation and phase accuracy.
 
