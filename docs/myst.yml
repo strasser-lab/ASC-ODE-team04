@@ -1,0 +1,26 @@
+version: 1
+project:
+  title: ASC-ODE
+  authors:
+    - name: Strasser Christian
+    - name: HUNG YI-CHENG
+    - name: Fernando Waduge Sachindra Priyageeth
+    - name: Csikós Máté László
+  copyright: "2025"
+  github: JSchoeberl/IntroSC.git
+  bibliography:
+    - references.bib
+
+  toc:
+    - file: intro.md
+
+site:
+  template: book-theme
+  baseurl: /ASC-ODE-team04
+
+  options:
+    logo: ASC_Logo_transparent_300ppi_RGB.png
+    folders: true
+
+renderer:
+  name: html

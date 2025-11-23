@@ -7,10 +7,10 @@ ASC-ODE provides various time-steppers which may be used for odes with right han
 given by a function object.
 
 A small demo for solving a mass-spring model as first order ODE
-\begin{eqnarray*}
+$$
 y_0^\prime & = & y_1 \\
 y_1^\prime & = & -\frac{k}{m} y_0
-\end{eqnarray*}
+$$
 is here:
 
 ```cpp
