@@ -9,7 +9,6 @@ include_directories(src nanoblas/src)
 
 add_subdirectory (src)
 add_subdirectory (nanoblas)
-add_subdirectory (data)
 
 add_subdirectory (mechsystem)
 
