@@ -16,8 +16,8 @@ The numerical methods to be compared are:
   1. Explicit RK2 (Midpoint)  
   2. Explicit RK4  
   3. Implicit Gauss-Legendre 2-stage (s=2)  
-  4. Implicit Radau IIA 2-stage (s=2)  
-We compute the approximate values and errors at each time step.  
+  4. Implicit Radau IIA 2-stage (s=2)
+We compute the approximate values and errors at each time step  
   
 **Principles of the Four Methods**  
 RK2 (Midpoint)  
@@ -25,7 +25,7 @@ RK2 (Midpoint)
 + Step formula:  
   
 $$  
-    k_1​=f(t_n​,y_n​), k_2​=f(t_n​ +h/2 , y_n​+h k_1​/2)  
+    k_1​=f(t_n​,y_n​), k_2​=f(t_n​ +h/2,y_n​+h k_1​/2)  
     y_{n+1}​=y_n+h k_2​  
 $$  
 
@@ -35,10 +35,12 @@ RK4
 + Step formula:  
   
 $$  
-    k_1​ = f(t_n​,y_n​) , k_2​ = f(t_n​+h/2 , y_n​+h k_1​ /2)  
-    k_3​ = f(t_n​+h/2 , y_n​+h k_2​ /2) , k_4​=f(t_n​ + h,y_n​+h k_3​)  
-    y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4​)  
-$$  
+    k_1​ = f(t_n​,y_n​)  
+    k_2​ = f(t_n​+h/2,y_n​+h k_1​ /2)  
+    k_3​ = f(t_n​+h/2,y_n​+h k_2​ /2)  
+    k_4​=f(t_n​ + h,y_n​+h k_3​)  
+    y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4  
+$$
 
 Caracteristics: fourth-order convergence, explicit, higher accuracy than RK2.  
 Gauss-Legendre 2-stage  
@@ -66,10 +68,12 @@ Observations:
 **Conclusion**  
 a.Explicit methods:  
 + RK2 has limited accuracy, suitable for non-stiff ODEs with low precision requirements.  
-+ RK4 is fourth-order accurate, computationally efficient, and suitable for general non-stiff problems.  
++ RK4 is fourth-order accurate, computationally efficient, and suitable for general non-stiff problems.
+  
 b.Implicit methods:  
 + Gauss-Legendre and Radau IIA are more stable for stiff problems (A-stable).  
-+ Accuracy is comparable to RK4, and larger step sizes can be used without divergence.  
++ Accuracy is comparable to RK4, and larger step sizes can be used without divergence.
+  
 c.Summary:  
 + For non-stiff ODEs with high accuracy requirements, RK4 is the simplest and most effective choice.  
 + For stiff ODEs or when larger step sizes are desired, implicit methods (Gauss-Legendre / Radau IIA) are more appropriate.  
