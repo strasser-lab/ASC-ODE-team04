@@ -22,7 +22,7 @@ Then,
 Mathematics:
 
 $$
-f(x) = u(x) + v(x) \\[1em]
+f(x) = u(x) + v(x) \\
 f'(x) = u' + v'
 $$
 
@@ -44,7 +44,7 @@ AutoDiff<T> operator+(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = u(x) - v(x) \\[1em]
+f(x) = u(x) - v(x) \\
 f'(x) = u' - v'
 $$
 
@@ -66,7 +66,7 @@ AutoDiff<T> operator-(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = u(x) \cdot v(x) \\[1em]
+f(x) = u(x) \cdot v(x) \\
 f'(x) = u'v + uv'
 $$
 
@@ -88,7 +88,7 @@ AutoDiff<T> operator*(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = \frac{u(x)}{v(x)} \\[1em]
+f(x) = \frac{u(x)}{v(x)} \\
 f'(x) = \frac{u'v - uv'}{v^2}
 $$
 
@@ -111,7 +111,7 @@ AutoDiff<T> operator/(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = -u(x) \\[1em]
+f(x) = -u(x) \\
 f'(x) = -u'
 $$
 
@@ -256,7 +256,7 @@ Then,
 Mathematics:
 
 $$
-f(x) = c \cdot u(x) \Rightarrow f'(x) = c \cdot u'(x) \\[1em]
+f(x) = c \cdot u(x) \Rightarrow f'(x) = c \cdot u'(x) \\
 f(x) = u(x) \cdot c \Rightarrow f'(x) = u'(x) \cdot c
 $$
 
@@ -283,7 +283,7 @@ AutoDiff<T> operator*(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = c + u(x) \Rightarrow f'(x) = u'(x) \\[1em]
+f(x) = c + u(x) \Rightarrow f'(x) = u'(x) \\
 f(x) = u(x) + c \Rightarrow f'(x) = u'(x)
 $$
 
@@ -310,7 +310,7 @@ AutoDiff<T> operator+(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = c - u(x) \Rightarrow f'(x) = -u'(x) \\[1em]
+f(x) = c - u(x) \Rightarrow f'(x) = -u'(x) \\
 f(x) = u(x) - c \Rightarrow f'(x) = u'(x)
 $$
 
@@ -337,14 +337,14 @@ AutoDiff<T> operator-(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = \frac{u(x)}{c} \Rightarrow f'(x) = \frac{u'(x)}{c} \\[1em]
+f(x) = \frac{u(x)}{c} \Rightarrow f'(x) = \frac{u'(x)}{c} \\
 f(x) = \frac{c}{u(x)} \Rightarrow f'(x) = \frac{-c \cdot u'(x)}{u(x)^2}
 $$
 
 Example:
 
 $$
-f(x) = \frac{x}{2} \Rightarrow f'(x) = \frac{1}{2} \\[1em]
+f(x) = \frac{x}{2} \Rightarrow f'(x) = \frac{1}{2} \\
 f(x) = \frac{8}{x} \Rightarrow f'(x) = -\frac{8}{x^2}
 $$
 
