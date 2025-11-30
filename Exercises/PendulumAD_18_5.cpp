@@ -51,8 +51,8 @@ public:
 
 int main()
 {
-  double tend = 5.0;
-  int steps = 100;
+  double tend = 15.0;
+  int steps = 1000;
   double tau = tend/steps;
 
   Vector<> y_exp = { M_PI+0.001, 0 };
@@ -65,7 +65,7 @@ int main()
    ExplicitEuler explicit_stepper(rhs);
    CrankNicolson crank_stepper(rhs);
 
-  std::ofstream explicit_outfile ("data/ExplicitExercise_17_4_1_mass_PendulumAD.txt");
+  std::ofstream explicit_outfile ("data/ExplicitExercise_18_5_mass_PendulumAD.txt");
   explicit_outfile << 0.0 << "  " << y_exp(0) << " " << y_exp(1) << std::endl;
 
   for (int i = 0; i < steps; i++)
@@ -75,7 +75,7 @@ int main()
      explicit_outfile << (i+1) * tau << "  " << y_exp(0) << " " << y_exp(1) << std::endl;
   }
 
-  std::ofstream crank_outfile ("data/CrankExercise_17_4_1_PendulumAD.txt");
+  std::ofstream crank_outfile ("data/CrankExercise_18_5_PendulumAD.txt");
   crank_outfile << 0.0 << "  " << y_crank(0) << " " << y_crank(1) << std::endl;
 
   for (int i = 0; i < steps; i++)

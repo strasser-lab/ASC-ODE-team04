@@ -15,6 +15,7 @@ project:
     - file: intro.md
     - file: Exercise17_4_1.md
     - file: Exercise17_2_2.md
+    - file: Exercise_18_5.md
 
 site:
   template: book-theme
