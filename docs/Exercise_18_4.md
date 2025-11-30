@@ -393,13 +393,13 @@ The program evaluates $P, \, P'$ for 400 ($x$) points in the interval $[-1,1]$. 
 Then the program writes the results into the `legendre.csv` file in the following format:
 
 $$
-x, \: P_0, \: P_{0}', \: P_1, \: P_{1}', \: P_2, \: P_{2}', \: P_3, \: P_{3}', \: P_4, \: P_{4}', \: P_5, \: P_{5}'
+x, \quad P_0, \quad P_{0}', \quad P_1, \quad P_{1}', \quad P_2, \quad P_{2}', \quad P_3, \quad P_{3}', \quad P_4, \quad P_{4}', \quad P_5, \quad P_{5}'
 $$
 
 For example a line looks like this:
 
 $$
-0.5, \: 1.0, \: 0.0, \: 0.5, \: 1.0, \: -0.375, \: 3.0, \: 0.625, \: 7.5, \: -0.625, \: -15.0, \: -1.875, \: -18.75
+0.5, \quad 1.0, \quad 0.0, \quad 0.5, \quad 1.0, \quad -0.375, \quad 3.0, \quad 0.625, \quad 7.5, \quad -0.625, \quad -15.0, \quad -1.875, \quad -18.75
 $$
 
 (So for instance: $P'_{5}(0.5) = -18.75$)
