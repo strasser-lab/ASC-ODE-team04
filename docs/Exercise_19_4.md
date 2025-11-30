@@ -1,4 +1,4 @@
-**Problem Description**
+**Problem Description**  
 This exercise aims to compare different Runge-Kutta (RK) methods in terms of numerical accuracy and convergence when solving a first-order ordinary differential equation (ODE).  
 The ODE considered is:  
 
@@ -91,14 +91,14 @@ Observations:
   4. Reducing step size decreases the errors of RK4, GL2, and Radau2 rapidly, while RK2 decreases more slowly.  
   
 **Conclusion**  
-a.Explicit methods:  
+a. Explicit methods:  
 + RK2 has limited accuracy, suitable for non-stiff ODEs with low precision requirements.  
 + RK4 is fourth-order accurate, computationally efficient, and suitable for general non-stiff problems.
   
-b.Implicit methods:  
+b. Implicit methods:  
 + Gauss-Legendre and Radau IIA are more stable for stiff problems (A-stable).  
 + Accuracy is comparable to RK4, and larger step sizes can be used without divergence.
   
-c.Summary:  
+c. Summary:  
 + For non-stiff ODEs with high accuracy requirements, RK4 is the simplest and most effective choice.  
 + For stiff ODEs or when larger step sizes are desired, implicit methods (Gauss-Legendre / Radau IIA) are more appropriate.  
