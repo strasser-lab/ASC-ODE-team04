@@ -9,7 +9,7 @@ $$
 Its analytical solution is:  
 
 $$  
-    y(t)=e^(−t)
+    y(t)=e^{−t}
 $$  
 
 The numerical methods to be compared are:  
@@ -26,7 +26,8 @@ RK2 (Midpoint)
 + Step formula:  
   
 $$  
-    k_1​=f(t_n​,y_n​), k_2​=f(t_n​ +h/2,y_n​+h k_1​/2)  
+    k_1​=f(t_n​,y_n​)  
+    k_2​=f(t_n​ +h/2,y_n​+h k_1​/2)  
     y_{n+1}​=y_n+h k_2​  
 $$  
 
@@ -37,13 +38,9 @@ RK4
   
 $$  
     k_1​ = f(t_n​,y_n​)  
-    
     k_2​ = f(t_n​+h/2,y_n​+h k_1​ /2)  
-    
     k_3​ = f(t_n​+h/2,y_n​+h k_2​ /2)  
-    
     k_4​=f(t_n​ + h,y_n​+h k_3​)  
-    
     y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4  
 $$  
 
@@ -63,7 +60,8 @@ Radau IIA 2-stage
 **Error Comparison and Results**  
 Calculation conditions:  
 + Final time 𝑇 = 1.0  
-+ Number of steps 𝑁 = 10 (step size ℎ=0.1)  
++ Number of steps 𝑁 = 10 (step size ℎ=0.1)
+
 Sample numerical results:  
   
 Observations:  
