@@ -22,8 +22,7 @@ Then,
 Mathematics:
 
 $$
-f(x) = u(x) + v(x) \\
-f'(x) = u' + v'
+f(x) = u(x) + v(x), \quad f'(x) = u' + v'
 $$
 
 Example:
@@ -44,8 +43,7 @@ AutoDiff<T> operator+(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = u(x) - v(x) \\
-f'(x) = u' - v'
+f(x) = u(x) - v(x), \quad f'(x) = u' - v'
 $$
 
 Example:
@@ -66,8 +64,7 @@ AutoDiff<T> operator-(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = u(x) \cdot v(x) \\
-f'(x) = u'v + uv'
+f(x) = u(x) \cdot v(x), \quad f'(x) = u'v + uv'
 $$
 
 Example:
@@ -88,8 +85,7 @@ AutoDiff<T> operator*(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = \frac{u(x)}{v(x)} \\
-f'(x) = \frac{u'v - uv'}{v^2}
+f(x) = \frac{u(x)}{v(x)}, \quad f'(x) = \frac{u'v - uv'}{v^2}
 $$
 
 Example:
@@ -111,8 +107,7 @@ AutoDiff<T> operator/(const AutoDiff<T>& a, const AutoDiff<T>& b) {
 Mathematics:
 
 $$
-f(x) = -u(x) \\
-f'(x) = -u'
+f(x) = -u(x), \quad f'(x) = -u'
 $$
 
 Example:
@@ -256,7 +251,10 @@ Then,
 Mathematics:
 
 $$
-f(x) = c \cdot u(x) \Rightarrow f'(x) = c \cdot u'(x) \\
+f(x) = c \cdot u(x) \Rightarrow f'(x) = c \cdot u'(x)
+$$
+
+$$
 f(x) = u(x) \cdot c \Rightarrow f'(x) = u'(x) \cdot c
 $$
 
@@ -283,7 +281,10 @@ AutoDiff<T> operator*(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = c + u(x) \Rightarrow f'(x) = u'(x) \\
+f(x) = c + u(x) \Rightarrow f'(x) = u'(x)
+$$
+
+$$
 f(x) = u(x) + c \Rightarrow f'(x) = u'(x)
 $$
 
@@ -310,7 +311,10 @@ AutoDiff<T> operator+(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = c - u(x) \Rightarrow f'(x) = -u'(x) \\
+f(x) = c - u(x) \Rightarrow f'(x) = -u'(x)
+$$
+
+$$
 f(x) = u(x) - c \Rightarrow f'(x) = u'(x)
 $$
 
@@ -337,14 +341,20 @@ AutoDiff<T> operator-(const AutoDiff<T>& a, S scalar) {
 Mathematics:
 
 $$
-f(x) = \frac{u(x)}{c} \Rightarrow f'(x) = \frac{u'(x)}{c} \\
+f(x) = \frac{u(x)}{c} \Rightarrow f'(x) = \frac{u'(x)}{c}
+$$
+
+$$
 f(x) = \frac{c}{u(x)} \Rightarrow f'(x) = \frac{-c \cdot u'(x)}{u(x)^2}
 $$
 
 Example:
 
 $$
-f(x) = \frac{x}{2} \Rightarrow f'(x) = \frac{1}{2} \\
+f(x) = \frac{x}{2} \Rightarrow f'(x) = \frac{1}{2}
+$$
+
+$$
 f(x) = \frac{8}{x} \Rightarrow f'(x) = -\frac{8}{x^2}
 $$
 
@@ -372,22 +382,24 @@ We implemented this process in `main.cpp`. It evaluates in the interval $-1 \le 
 The Legendre polynomials are defined using the following recursive form:
 
 $$
+\begin{aligned}
 P_{0} = 1 \\
 P_{1} = x \\
 P_{k}(x) = \frac{(2k - 1)xP_{k-1}(x) - (k - 1)P_{k-2}(x)}{k}, \qquad k \ge 2
+\end{aligned}
 $$
 
 The program evaluates $P, \, P'$ for 400 ($x$) points in the interval $[-1,1]$. So it computes the values of the Legendre polynomials, and the values of their derivatives for each point.
 Then the program writes the results into the `legendre.csv` file in the following format:
 
 $$
-x, \, P_0, \, P_{0}', \, P_1, \, P_{1}', \, P_2, \, P_{2}', \, P_3, \, P_{3}', \, P_4, \, P_{4}', \, P_5, \, P_{5}'
+x, \: P_0, \: P_{0}', \: P_1, \: P_{1}', \: P_2, \: P_{2}', \: P_3, \: P_{3}', \: P_4, \: P_{4}', \: P_5, \: P_{5}'
 $$
 
 For example a line looks like this:
 
 $$
-0.5, \, 1.0, \, 0.0, \, 0.5, \, 1.0, \, -0.375, \, 3.0, \, 0.625, \, 7.5, \, -0.625, \, -15.0, \, -1.875, \, -18.75
+0.5, \: 1.0, \: 0.0, \: 0.5, \: 1.0, \: -0.375, \: 3.0, \: 0.625, \: 7.5, \: -0.625, \: -15.0, \: -1.875, \: -18.75
 $$
 
 (So for instance: $P'_{5}(0.5) = -18.75$)
