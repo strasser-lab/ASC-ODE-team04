@@ -3,8 +3,10 @@ This exercise aims to compare different Runge-Kutta (RK) methods in terms of num
 The ODE considered is:  
 
 $$
+\begin{aligned}
     y′(t)=−y(t), \\
     y(0)=1  
+\end{aligned}
 $$  
 
 Its analytical solution is:  
@@ -27,9 +29,11 @@ RK2 (Midpoint)
 + Step formula:  
   
 $$
+\begin{aligned}
     k_1​=f(t_n​,y_n​), \\
     k_2​=f(t_n​ +h/2,y_n​+h k_1​/2), \\ 
-    y_{n+1}​=y_n+h k_2​     
+    y_{n+1}​=y_n+h k_2​  
+\end{aligned}
 $$  
 
 Characteristics: second-order convergence, explicit computation.  
@@ -38,11 +42,11 @@ RK4
 + Step formula:  
   
 $$
-    k_1​=f(t_n​,y_n​), \\
-    k_2​=f(t_n​+h/2,y_n​+h k_1​/2), \\
-    k_3​=f(t_n​+h/2,y_n​+h k_2​/2), \\
-    k_4​=f(t_n​ + h,y_n​+h k_3​), \\
-    y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4) \\
+$$  k_1​=f(t_n​,y_n​), $$
+$$  k_2​=f(t_n​+h/2,y_n​+h k_1​/2), $$
+$$  k_3​=f(t_n​+h/2,y_n​+h k_2​/2), $$
+$$  k_4​=f(t_n​ + h,y_n​+h k_3​), $$
+$$  y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4) $$
 $$  
 
 Caracteristics: fourth-order convergence, explicit, higher accuracy than RK2.  
