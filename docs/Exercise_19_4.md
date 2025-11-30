@@ -2,55 +2,59 @@
 This exercise aims to compare different Runge-Kutta (RK) methods in terms of numerical accuracy and convergence when solving a first-order ordinary differential equation (ODE).  
 The ODE considered is:  
 
-$$
+$$  
     y′(t)=−y(t),y(0)=1
-$$
+$$  
+
 Its analytical solution is:  
 
-$$
+$$  
     y(t)=e−t
-$$
+$$  
+
 The numerical methods to be compared are:  
   1. Explicit RK2 (Midpoint)  
   2. Explicit RK4  
   3. Implicit Gauss-Legendre 2-stage (s=2)  
-  4. Implicit Radau IIA 2-stage (s=2)  
+  4. Implicit Radau IIA 2-stage (s=2)
 We compute the approximate values and errors at each time step.  
   
 **Principles of the Four Methods**  
 RK2 (Midpoint)  
-+Type: Explicit second-order Runge-Kutta  
-+Step formula:  
++ Type: Explicit second-order Runge-Kutta  
++ Step formula:  
   
-$$
-    k1​=f(tn​,yn​),k2​=f(tn​+h/2,yn​+hk1​/2)  
-    yn+1​=yn​+hk2​  
-$$
+$$  
+    k_1​ = f(t_n​,y_n​),k_2​ = f(t_n​  +h/2 , y_n​ + h k_1​/2)  
+    y_{n+1}​=y_n ​+ h k_2​  
+$$  
+
 Characteristics: second-order convergence, explicit computation.  
 RK4  
-+Type: Explicit fourth-order Runge-Kutta  
-+Step formula:  
++ Type: Explicit fourth-order Runge-Kutta  
++ Step formula:  
   
-$$
-    k1​=f(tn​,yn​),k2​=f(tn​+h/2,yn​+hk1​/2)  
-    k3​=f(tn​+h/2,yn​+hk2​/2),k4​=f(tn​+h,yn​+hk3​)  
-    yn+1​=yn​+6/h​(k1​+2k2​+2k3​+k4​)  
-$$
+$$  
+    k_1​ = f(t_n​,y_n​) , k_2​ = f(t_n​ + h/2 , y_n​ + h k_1​ /2)  
+    k_3​ = f(t_n​ + h/2 , y_n​+h k_2​ /2) , k_4​=f(t_n​ + h,y_n​ + h k_3​)  
+    y_{n+1}​ = y_n​+6/h​(k_1​ + 2 k_2 ​+ 2 k_3​ + k_4​)  
+$$  
+
 Caracteristics: fourth-order convergence, explicit, higher accuracy than RK2.  
 Gauss-Legendre 2-stage  
-+Type: Implicit two-stage Gauss-Legendre Runge-Kutta  
-+Uses two nodes (s=2) in a high-order implicit integration formula  
-+Each step requires solving a nonlinear system (fixed-point iteration or Newton iteration)  
-+Characteristics: A-stable, second-order accuracy, implicit computation.  
++ Type: Implicit two-stage Gauss-Legendre Runge-Kutta  
++ Uses two nodes (s=2) in a high-order implicit integration formula  
++ Each step requires solving a nonlinear system (fixed-point iteration or Newton iteration)  
++ Characteristics: A-stable, second-order accuracy, implicit computation.  
 Radau IIA 2-stage  
-+Type: Implicit Radau IIA Runge-Kutta  
-+Two nodes, implicit method  
-+Suitable for stiff ODEs, A-stable and second-order accurate  
-+Step requires solving a nonlinear system.  
++ Type: Implicit Radau IIA Runge-Kutta  
++ Two nodes, implicit method  
++ Suitable for stiff ODEs, A-stable and second-order accurate  
++ Step requires solving a nonlinear system.  
 **Error Comparison and Results**  
 Calculation conditions:  
-+Final time 𝑇 = 1.0  
-+Number of steps 𝑁 = 10 (step size ℎ=0.1)  
++ Final time 𝑇 = 1.0  
++ Number of steps 𝑁 = 10 (step size ℎ=0.1)  
 Sample numerical results:  
   
 Observations:  
