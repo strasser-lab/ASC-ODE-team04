@@ -9,7 +9,7 @@ $$
 Its analytical solution is:  
 
 $$  
-    y(t)=e^−t
+    y(t)=e^(−t)
 $$  
 
 The numerical methods to be compared are:  
@@ -17,6 +17,7 @@ The numerical methods to be compared are:
   2. Explicit RK4  
   3. Implicit Gauss-Legendre 2-stage (s=2)  
   4. Implicit Radau IIA 2-stage (s=2)
+
 We compute the approximate values and errors at each time step  
   
 **Principles of the Four Methods**  
@@ -36,11 +37,15 @@ RK4
   
 $$  
     k_1​ = f(t_n​,y_n​)  
+    
     k_2​ = f(t_n​+h/2,y_n​+h k_1​ /2)  
+    
     k_3​ = f(t_n​+h/2,y_n​+h k_2​ /2)  
+    
     k_4​=f(t_n​ + h,y_n​+h k_3​)  
+    
     y_{n+1}​=y_n​+6/h​(k_1​+2 k_2​+2 k_3​+k_4  
-$$
+$$  
 
 Caracteristics: fourth-order convergence, explicit, higher accuracy than RK2.  
 Gauss-Legendre 2-stage  
@@ -48,11 +53,13 @@ Gauss-Legendre 2-stage
 + Uses two nodes (s=2) in a high-order implicit integration formula  
 + Each step requires solving a nonlinear system (fixed-point iteration or Newton iteration)  
 + Characteristics: A-stable, second-order accuracy, implicit computation.
+
 Radau IIA 2-stage  
 + Type: Implicit Radau IIA Runge-Kutta  
 + Two nodes, implicit method  
 + Suitable for stiff ODEs, A-stable and second-order accurate  
-+ Step requires solving a nonlinear system.  
++ Step requires solving a nonlinear system.
+
 **Error Comparison and Results**  
 Calculation conditions:  
 + Final time 𝑇 = 1.0  
