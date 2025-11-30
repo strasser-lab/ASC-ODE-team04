@@ -17,6 +17,7 @@ project:
     - file: Exercise17_4_1.md
     - file: Exercise_18_4.md
     - file: Exercise_18_5.md
+    - file: Exercise_19_4.md
 site:
   template: book-theme
   baseurl: /ASC-ODE-team04
