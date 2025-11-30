@@ -20,11 +20,9 @@ project:
     - file: Exercise_19_4.md
 site:
   template: book-theme
-  baseurl: /ASC-ODE-team04
 
   options:
+    baseurl: /ASC-ODE-team04
     logo: ASC_Logo_transparent_300ppi_RGB.png
     folders: true
 
-renderer:
-  name: html
