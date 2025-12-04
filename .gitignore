@@ -38,6 +38,6 @@ mass_spring/.ipynb_checkpoints
 
 docs/_build
 demos/output*.txt
-
+mechsystem/.ipynb_checkpoints
 
 legendre_autodiff/build
