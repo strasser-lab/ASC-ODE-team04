@@ -1,12 +1,12 @@
 #ifndef MASS_SPRING_HPP
 #define MASS_SPRING_HPP
 
-#include <nonlinfunc.hpp>
-#include <timestepper.hpp>
+#include "nonlinfunc.hpp"
+#include "timestepper.hpp"
 
 using namespace ASC_ode;
 
-#include <vector.hpp>
+#include "vector.hpp"
 using namespace nanoblas;
 
 
@@ -143,7 +143,7 @@ public:
   virtual size_t dimX() const override { return D*mss.masses().size(); }
   virtual size_t dimF() const override{ return D*mss.masses().size(); }
 
-  virtual void evaluate (VectorView<double> x, VectorView<double> f) const override
+  virtual void evaluate (VectorView<double> x, VectorView<double> f) const override  
   {
     f = 0.0;
 
@@ -177,8 +177,9 @@ public:
     for (size_t i = 0; i < mss.masses().size(); i++)
       fmat.row(i) *= 1.0/mss.masses()[i].mass;
   }
-  
-  virtual void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override
+
+/*
+  virtual void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override   // Finite difference need to Modify !!!!!
   {
     // TODO: exact differentiation
     double eps = 1e-8;
@@ -193,8 +194,92 @@ public:
         evaluate (xr, fr);
         df.col(i) = 1/(2*eps) * (fr-fl);
       }
-  }
-  
+  }                               // Modify till here !!!!!
+*/ 
+    virtual void evaluateDeriv (VectorView<double> x, MatrixView<double> df) const override
+    {
+        df = 0.0;
+
+        auto xmat = x.asMatrix(mss.masses().size(), D);
+
+        auto writeBlock = [&](size_t i, size_t j, const Mat<D,D>& M)
+        {
+            // 對 2D：row = 2*i + r, col = 2*j + c
+            for (int r = 0; r < D; r++)
+                for (int c = 0; c < D; c++)
+                    df(i*D + r, j*D + c) += M(r,c);
+        };
+
+        for (auto &spring : mss.springs())
+        {
+            auto [c1, c2] = spring.connectors;
+
+            // Position
+            Vec<D> p1, p2;
+            if (c1.type == Connector::FIX)
+                p1 = mss.fixes()[c1.nr].pos;
+            else
+                p1 = xmat.row(c1.nr);
+
+            if (c2.type == Connector::FIX)
+                p2 = mss.fixes()[c2.nr].pos;
+            else
+                p2 = xmat.row(c2.nr);
+
+            Vec<D> d = p2 - p1;
+            double s = norm(d);
+            if (s < 1e-12) continue;
+            Vec<D> u = d / s;
+
+            double k = spring.stiffness;
+            double L = spring.length;
+
+            Mat<D,D> A; // uu^T
+            for (int r=0; r<D; r++)
+                for (int c=0; c<D; c++)
+                    A(r,c) = u[r]*u[c];
+
+            Mat<D,D> I; // identity
+            for (int r=0; r<D; r++)
+                for (int c=0; c<D; c++)
+                    I(r,c) = (r==c);
+
+            Mat<D,D> B = I - A;
+
+            // Derivative of a matrix（to p1 / p2）
+            Mat<D,D> dF_dp1, dF_dp2;
+            dF_dp1 = -k * ( A + ((s-L)/s) * B );
+            dF_dp2 =  k * ( A + ((s-L)/s) * B );
+
+            // divided by (accelerate = f = F/m)
+            if (c1.type == Connector::MASS)
+            {
+                double m1 = mss.masses()[c1.nr].mass;
+                Mat<D,D> M = (1.0/m1) * dF_dp1;
+                writeBlock(c1.nr, c1.nr, M);
+
+                if (c2.type == Connector::MASS)
+                {
+                    Mat<D,D> N = (1.0/m1) * (-dF_dp1);
+                    writeBlock(c1.nr, c2.nr, N);
+                }
+            }
+
+            if (c2.type == Connector::MASS)
+            {
+                double m2 = mss.masses()[c2.nr].mass;
+                Mat<D,D> M = (1.0/m2) * dF_dp2;
+                writeBlock(c2.nr, c2.nr, M);
+
+                if (c1.type == Connector::MASS)
+                {
+                    Mat<D,D> N = (1.0/m2) * (-dF_dp2);
+                    writeBlock(c2.nr, c1.nr, N);
+                }
+            }
+        }
+    }
+
 };
 
 #endif

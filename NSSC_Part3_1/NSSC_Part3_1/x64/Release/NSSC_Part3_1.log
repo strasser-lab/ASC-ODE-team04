@@ -1,0 +1,2 @@
+﻿  test_ode.cpp
+C:\NSSC_EX1\Part_3\ASC-ODE-team04\demos\test_ode.cpp(4,10): error C1083: 無法開啟包含檔案: 'nonlinfunc.hpp': No such file or directory
