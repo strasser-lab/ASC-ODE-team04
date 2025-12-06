@@ -35,12 +35,14 @@ PYBIND11_MODULE(mass_spring, m) {
                     [](Mass<3> & m) { return m.mass; },
                     [](Mass<3> & m, double mass) { m.mass = mass; })
       .def_property_readonly("pos",
-                             [](Mass<3> & m) { return m.pos.data(); });
+                             [](Mass<3> & m) { return m.pos.data(); })
+      .def_property_readonly("vel",
+                             [](Mass<3> & m) { return m.vel.data(); })
     ;
 
-    m.def("Mass", [](double m, std::array<double,3> p)
+    m.def("Mass", [](double m, std::array<double,3> p, std::array<double,3> v)
     {
-      return Mass<3>{m, { p[0], p[1], p[2] }};
+      return Mass<3>{m, { p[0], p[1], p[2] }, { v[0], v[1], v[2] }};
     });
 
 
