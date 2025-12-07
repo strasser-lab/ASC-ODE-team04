@@ -230,7 +230,7 @@ public:
             double s = norm(d);
             if (s < 1e-12) continue;
 
-            Vec<D> u = d / s;
+            Vec<D> u = (1.0 / s) * d;
 
             double k = spring.stiffness;
             double L = spring.length;
@@ -245,7 +245,7 @@ public:
 
             for (int r = 0; r < D; r++)
                 for (int c = 0; c < D; c++)
-                    A(r, c) = u[r] * u[c];
+                    A(r, c) = u(r) * u(c);
 
             for (int r = 0; r < D; r++)
                 I(r, r) = 1.0;
