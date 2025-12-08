@@ -1,0 +1,10 @@
+# Applications of Newmark
+The following examples have been created:
+## A Chain
+![](Plots/Chain.mp4)
+
+## A Crane
+![](Plots/Crane.mp4)
+
+## A Spinning Top
+![](Plots/Spinning_Top.mp4)

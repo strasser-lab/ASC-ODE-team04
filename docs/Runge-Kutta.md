@@ -1,6 +1,5 @@
-**Problem Description**  
-This exercise aims to compare different Runge-Kutta (RK) methods in terms of numerical accuracy and convergence when solving a first-order ordinary differential equation (ODE).  
-The ODE considered is:  
+# Runge Kutta
+
 
 $$
 \begin{aligned}

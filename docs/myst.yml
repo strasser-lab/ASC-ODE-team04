@@ -13,11 +13,11 @@ project:
 
   toc:
     - file: intro.md
-    - file: Exercise17_2_2.md
-    - file: Exercise17_4_1.md
-    - file: Exercise_18_4.md
-    - file: Exercise_18_5.md
-    - file: Exercise_19_4.md
+    - file: Euler_methods.md
+    - file: Crank_Nicolson.md
+    - file: Autodiff.md
+    - file: Runge-Kutta.md
+    - file: Newmark.md
 site:
   template: book-theme
 

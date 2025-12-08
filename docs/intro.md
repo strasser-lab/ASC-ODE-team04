@@ -1,7 +1,7 @@
-# Welcome to ASC-ODE's documentation!
+# Welcome to ASC-ODE_team-04's documentation!
 
 
-ASC-ODE is is a C++ library for solving ordinary differential equations (ODEs).
+ASC-ODE_team-04 is is a C++ library for solving ordinary differential equations (ODEs).
 The equation is defined by the right hand side function.
 ASC-ODE provides various time-steppers which may be used for odes with right hand sides
 given by a function object.
@@ -43,14 +43,13 @@ The result of this simulation in phase space is shown here:
 
 ## Installation
 
-install XXX-odesolver it via git-clone:
+install ASC-ODE_team-04 via git-clone:
 
-    git clone https://github.com/my-github-clone/my-ode-solver.git
-
+    git clone https://github.com/strasser-lab/ASC-ODE-team04.git
 
 To configure and build some tests do
 
-    cd my-ode-solver
+    cd ASC-ODE-team04
     mkdir build
     cd build
     cmake ..
@@ -58,7 +57,14 @@ To configure and build some tests do
     
 
 ## Available time-stepping methods are
-...
+
+- Explicit Euler
+- Implicit Euler
+- Crank Nicolson
+- Rungne Kutter
+- Newmark
+
+These are explained in there respective chapters, alongside the exercises we had to do.
 
 
 

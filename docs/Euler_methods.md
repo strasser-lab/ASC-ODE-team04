@@ -1,14 +1,8 @@
-# Exercise 17.2.2
+# Euler Methods
 
-In this exercise we had to:
+Exercise 17.2.2
 
-1. Implement the Explicit Euler method.
-2. Implement the Improved Euler (midpoint-like) method.
-3. Compare the methods in terms of accuracy and energy conservation for a mass-spring system.
-
-## Methods Implemented
-
-### Explicit Euler
+## Explicit Euler
 
 The Explicit Euler method has been implemented in `Exercise_17_2_2.cpp`. The method is defined as:
 
@@ -30,7 +24,7 @@ y.y += tau * f.y;
 y.v += tau * f.v;
 ```
 
-### Improved Euler (Midpoint-Like)
+## Improved Euler (Midpoint-Like)
 
 The Improved Euler method is a two-stage method, which uses a midpoint-like estimate:
 
@@ -54,7 +48,7 @@ y.y += tau * f2.y;
 y.v += tau * f2.v;
 ```
 
-### Analytical Solution
+## Analytical Solution
 
 For the mass-spring system with (m = k = 1) and initial conditions (y(0)=1, v(0)=0), the analytical solution is:
 

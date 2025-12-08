@@ -1,4 +1,5 @@
-# Exercise 17.4.1
+# Crank–Nicolson Method 
+## Exercise 17.4.1
 
 In this exercise we had to:
 
